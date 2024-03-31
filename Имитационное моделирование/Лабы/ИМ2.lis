@@ -1,0 +1,207 @@
+    Student GPSS/H Release 3.70 (CT256)     20 Mar 2024   13:22:58     File: C:\Users\AnvelirPortable\Desktop\ÈÌ\ÈÌ2.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                 	SIMULATE
+        2     2              1  	GENERATE 30
+        3     3              2  	QUEUE QF1
+        4     4              3  	SEIZE DF1
+        5     5              4  	DEPART QF1
+        6     6              5  	ADVANCE 30
+        7     7              6  	RELEASE DF1
+        8     8              7  	TRANSFER .1,Func4,Func5
+        9     9              8  Func4 	QUEUE QF4
+       10    10              9  	SEIZE DF4
+       11    11             10  	DEPART QF4
+       12    12             11  	ADVANCE 10
+       13    13             12  	RELEASE DF4
+       14    14             13  	TRANSFER .6,Func6,Func5
+       15    15             14  Func5	QUEUE QF5
+       16    16             15  	SEIZE DF5
+       17    17             16  	DEPART QF5
+       18    18             17  	ADVANCE 10
+       19    19             18  	RELEASE DF5
+       20    20             19  	TRANSFER .5,Func4,Func7
+       21    21             20  Func7	QUEUE QF7
+       22    22             21  	SEIZE DF7
+       23    23             22  	DEPART QF7
+       24    24             23  	ADVANCE 10
+       25    25             24  	RELEASE DF7
+       26    26             25  	TRANSFER .7,Func6,Func8
+       27    27             26  Func6 	QUEUE QF6
+       28    28             27  	SEIZE DF6
+       29    29             28  	DEPART QF6
+       30    30             29  	ADVANCE 10
+       31    31             30  	RELEASE DF6
+       32    32             31  Func8	QUEUE QF8
+       33    33             32  	SEIZE DF8
+       34    34             33  	DEPART QF8
+       35    35             34  	ADVANCE 10
+       36    36             35  	RELEASE DF8
+       37    37             36  	TERMINATE
+       38    38                  
+       39    39             37  	GENERATE 10
+       40    40             38  	QUEUE QF2
+       41    41             39  	SEIZE DF2
+       42    42             40  	DEPART QF2
+       43    43             41  	ADVANCE 10
+       44    44             42  	RELEASE DF2
+       45    45             43  	TRANSFER .5,Func4,Func3
+       46    46                 	
+       47    47             44  	GENERATE 20
+       48    48             45  Func3	QUEUE QF3
+       49    49             46  	SEIZE DF3
+       50    50             47  	DEPART QF3
+       51    51             48  	ADVANCE 10
+       52    52             49  	RELEASE DF3
+       53    53             50  	TRANSFER .9,Func4,Func6,
+       54    54                 	
+       55    55             51  	GENERATE 100
+       56    56             52  	TERMINATE 1
+
+    Student GPSS/H Release 3.70 (CT256)     20 Mar 2024   13:22:58     File: C:\Users\AnvelirPortable\Desktop\ÈÌ\ÈÌ2.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+       57    57                 	START 1
+       58    58                 	END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 1=DF1           2=DF4           3=DF5           4=DF7           5=DF6           6=DF8           
+                   7=DF2           8=DF3
+
+           Queues: 1=QF1           2=QF4           3=QF5           4=QF7           5=QF6           6=QF8           
+                   7=QF2           8=QF3
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+Func3       45          48  Block           45
+Func4        8           9  Block            8    20    45    53
+Func5       14          15  Block            8    14
+Func6       26          27  Block           14    26    53
+Func7       20          21  Block           20
+Func8       31          32  Block           26
+ 
+DF1          1              Facility         4     7
+DF2          7              Facility        41    44
+DF3          8              Facility        49    52
+DF4          2              Facility        10    13
+DF5          3              Facility        16    19
+DF6          5              Facility        28    31
+DF7          4              Facility        22    25
+DF8          6              Facility        33    36
+ 
+QF1          1              Queue            3     5
+QF2          7              Queue           40    42
+QF3          8              Queue           48    50
+QF4          2              Queue            9    11
+QF5          3              Queue           15    17
+QF6          5              Queue           27    29
+QF7          4              Queue           21    23
+QF8          6              Queue           32    34
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:     1084
+Compiled Data:      160
+Miscellaneous:        0
+Entities:          1040
+Common:           10000
+-----------------------
+Total:            12284
+
+
+
+GPSS/H Model Size:
+
+Control Statements      3
+Blocks                 52
+
+
+
+Simulation begins.
+
+Relative Clock: 100.0000   Absolute Clock: 100.0000
+
+
+
+Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total
+1                     3  11          1         7  21                    0  Func8                 6  41          1         9 
+2                     3  12                    6  22                    0  32                    6  42                    8 
+3                     3  13                    6  23                    0  33                    6  43                    8 
+4                     3  Func5                 4  24                    0  34          1         6  44                    4 
+5           1         3  15                    4  25                    0  35                    5  Func3                 6 
+6                     2  16                    4  Func6       2         9  36                    5  46                    6 
+7                     2  17          1         4  27                    7  37                    9  47                    6 
+Func4       3        10  18                    3  28                    7  38                    9  48                    6 
+9                     7  19                    3  29          1         7  39                    9  49                    6 
+10                    7  Func7                 0  30                    6  40                    9  50                    6 
+
+
+
+Block Current     Total  
+51                    1 
+52                    1 
+
+
+
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+     DF1  0.700                         3      23.333    AVAIL               13 
+     DF4  0.700                         7      10.000    AVAIL                5 
+     DF5  0.400                         4      10.000    AVAIL               12 
+     DF6  0.700                         7      10.000    AVAIL               11 
+     DF8  0.600                         6      10.000    AVAIL               10 
+     DF2  0.900                         9      10.000    AVAIL               18 
+     DF3  0.600                         6      10.000    AVAIL                  
+
+
+
+   Queue     Maximum      Average       Total        Zero     Percent      Average      $Average     Qtable     Current
+            Contents     Contents      Entries     Entries     Zeros      Time/Unit    Time/Unit     Number    Contents
+     QF1           1        0.000           3           3      100.0         0.000         0.000                      0
+     QF4           3        0.600          10           5       50.0         6.000        12.000                      3
+     QF5           1        0.100           4           3       75.0         2.500        10.000                      0
+     QF6           3        0.800           9           3       33.3         8.889        13.333                      2
+     QF8           1        0.000           6           6      100.0         0.000         0.000                      0
+     QF2           1        0.000           9           9      100.0         0.000         0.000                      0
+     QF3           1        0.100           6           5       83.3         1.667        10.000                      0
+
+
+
+  Random    Antithetic     Initial     Current      Sample   Chi-Square
+  Stream      Variates    Position    Position       Count   Uniformity
+       1           OFF      100000      100025          25       N/A
+
+Status of Common Storage
+
+    8024 bytes available
+    1976 in use
+    2088 used (max)
+
+Simulation complete.  Absolute Clock: 100.0000
+
+
+
+Total Block Executions: 257
+
+Blocks / second:        3496600
+
+Microseconds / Block:   0.29
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.00
+Output:          0.00
+---------------------
+Total:           0.00

@@ -1,0 +1,117 @@
+    Student GPSS/H Release 3.70 (CT256)     20 Mar 2024   14:43:13     File: C:\Users\AnvelirPortable\Desktop\ÈÌ\ÈÌ1_Îבנאע.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                 	SIMULATE
+        2     2              1  	GENERATE 11,4
+        3     3              2  	QUEUE AAA
+        4     4              3  	SEIZE MEM
+        5     5              4  	DEPART AAA
+        6     6              5  	ADVANSE 15
+        7     7              6  	RELEASE MEM
+        8     8              7  	TERMINATE
+        9     9                  
+       10    10              8  	GENERATE 534
+       11    11              9  	TERMINATE 1
+       12    12                 	START 1
+       13    13                 	END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 1=MEM
+
+           Queues: 1=AAA
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+MEM          1              Facility         4     7
+ 
+AAA          1              Queue            3     5
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:      242
+Compiled Data:       80
+Miscellaneous:        0
+Entities:           368
+Common:           10000
+-----------------------
+Total:            10690
+
+
+
+GPSS/H Model Size:
+
+Control Statements      3
+Blocks                  9
+
+
+
+Simulation begins.
+
+Relative Clock: 534.0000   Absolute Clock: 534.0000
+
+
+
+Block Current     Total  
+1                    47 
+2          12        47 
+3                    35 
+4                    35 
+5           1        35 
+6                    34 
+7                    34 
+8                     1 
+9                     1 
+
+
+
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+     MEM  0.983                        35      14.995    AVAIL               36 
+
+
+
+   Queue     Maximum      Average       Total        Zero     Percent      Average      $Average     Qtable     Current
+            Contents     Contents      Entries     Entries     Zeros      Time/Unit    Time/Unit     Number    Contents
+     AAA          12        5.773          47           1        2.1        65.595        67.021                     12
+
+
+
+  Random    Antithetic     Initial     Current      Sample   Chi-Square
+  Stream      Variates    Position    Position       Count   Uniformity
+       1           OFF      100000      100048          48       N/A
+
+
+
+Status of Common Storage
+
+    7976 bytes available
+    2024 in use
+    2136 used (max)
+
+Simulation complete.  Absolute Clock: 534.0000
+
+
+
+Total Block Executions: 269
+
+Blocks / second:        8566888
+
+Microseconds / Block:   0.12
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.00
+Output:          0.00
+---------------------
+Total:           0.00
