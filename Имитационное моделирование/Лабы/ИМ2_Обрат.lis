@@ -1,11 +1,11 @@
-    Student GPSS/H Release 3.70 (CT256)      3 Apr 2024   15:28:19     File: C:\Users\AnvelirPortable\Desktop\Работа\МАИ\3k6s\3k6s\Имитационное моделирование\Лабы\ИМ2.txt
+    Student GPSS/H Release 3.70 (CT256)      3 Apr 2024   15:29:47     File: C:\Users\AnvelirPortable\Desktop\Работа\МАИ\3k6s\3k6s\Имитационное моделирование\Лабы\ИМ2_Обрат.txt
 
     Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
  
         1     1                 	REALLOCATE com,32000
         2     2                  
         3     3                 	SIMULATE
-        4     4              1  	GENERATE 10
+        4     4              1  	GENERATE 10,,,10
         5     5              2  	QUEUE QF1
         6     6              3  	SEIZE DF1
         7     7              4  	DEPART QF1
@@ -37,7 +37,7 @@
        33    33             30  	RELEASE DF4
        34    34             31  	TRANSFER .5,Func6,Func7
        35    35                  
-       36    36             32  Func2	GENERATE 20
+       36    36             32  Func2	GENERATE 20,,,20
        37    37             33  	QUEUE QF2
        38    38             34  	SEIZE DF2
        39    39             35  	DEPART QF2
@@ -45,7 +45,7 @@
        41    41             37  	RELEASE DF2
        42    42             38  	TRANSFER .5,Func4,Func5
        43    43                 	
-       44    44             39  Func3	GENERATE 10
+       44    44             39  Func3	GENERATE 10,,,10
        45    45             40  	QUEUE QF3
        46    46             41  	SEIZE DF3
        47    47             42  	DEPART QF3
@@ -59,14 +59,16 @@
        55    55             49  	ADVANCE 10
        56    56             50  	RELEASE DF8
 
-    Student GPSS/H Release 3.70 (CT256)      3 Apr 2024   15:28:19     File: C:\Users\AnvelirPortable\Desktop\Работа\МАИ\3k6s\3k6s\Имитационное моделирование\Лабы\ИМ2.txt
+    Student GPSS/H Release 3.70 (CT256)      3 Apr 2024   15:29:47     File: C:\Users\AnvelirPortable\Desktop\Работа\МАИ\3k6s\3k6s\Имитационное моделирование\Лабы\ИМ2_Обрат.txt
 
     Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
  
-       57    57             51  	TERMINATE 1
+       57    57             51  	TERMINATE
        58    58                 	
-       59    59                 	START 40
-       60    60                 	END
+       59    59             52  	GENERATE 440
+       60    60             53  	TERMINATE 1
+       61    61                 	START 1
+       62    62                 	END
 
 Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
 
@@ -113,20 +115,20 @@ QF8          8              Queue           52    54
 
 Storage Requirements (Bytes)
 
-Compiled Code:     1062
-Compiled Data:      120
+Compiled Code:     1098
+Compiled Data:      160
 Miscellaneous:        0
 Entities:          1040
 Common:           32000
 -----------------------
-Total:            34222
+Total:            34298
 
 
 
 GPSS/H Model Size:
 
 Control Statements      3
-Blocks                 51
+Blocks                 53
 
 
 
@@ -137,80 +139,82 @@ Relative Clock: 440.0000   Absolute Clock: 440.0000
 
 
 Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total
-1                    44  11                   19  21                   41  31                   39  41                   43 
-2           1        44  12                   19  22                   41  Func2                22  42                   43 
-3                    43  13                   19  23          1        41  33                   22  43          1        43 
-4                    43  Func7      29        71  24                   40  34                   22  44                   42 
-5           1        43  15                   42  25                   40  35                   22  45                   42 
-6                    42  16                   42  Func4       5        45  36          1        22  Func8      12        52 
-7                    42  17          1        42  27                   40  37                   21  47                   40 
-Func5                19  18                   41  28                   40  38                   21  48                   40 
-9                    19  19                   41  29          1        40  Func3                43  49                   40 
-10                   19  Func6      16        57  30                   39  40                   43  50                   40 
+1                    10  11                    7  21                   32  31                   23  41                   10 
+2                    10  12                    7  22                   32  Func2                20  42                   10 
+3                    10  13                    7  23          1        32  33                   20  43                   10 
+4                    10  Func7                29  24                   31  34                   20  44                   10 
+5                    10  15                   29  25                   31  35                   20  45                   10 
+6                    10  16                   29  Func4                23  36                   20  Func8                39 
+7                    10  17                   29  27                   23  37                   20  47                   39 
+Func5                 7  18                   29  28                   23  38                   20  48                   39 
+9                     7  19                   29  29                   23  Func3                10  49                   39 
+10                    7  Func6                32  30                   23  40                   10  50                   39 
 
 
 
 Block Current     Total  
-51                   40 
+51                   39 
+52                    1 
+53                    1 
 
 
 
           --Avg-Util-During--                                                               
 Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
            Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
-     DF1  0.977                        43      10.000    AVAIL              107 
-     DF5  0.432                        19      10.000    AVAIL                  
-     DF7  0.955                        42      10.000    AVAIL               67 
-     DF6  0.932                        41      10.000    AVAIL               47 
-     DF4  0.886                        40       9.750    AVAIL               98 
-     DF2  0.477                        22       9.545    AVAIL              106 
-     DF3  0.977                        43      10.000    AVAIL              108 
-     DF8  0.909                        40      10.000    AVAIL                  
+     DF1  0.227                        10      10.000    AVAIL                  
+     DF5  0.159                         7      10.000    AVAIL                  
+     DF7  0.659                        29      10.000    AVAIL                  
+     DF6  0.727                        32      10.000    AVAIL               41 
+     DF4  0.523                        23      10.000    AVAIL                  
+     DF2  0.455                        20      10.000    AVAIL                  
+     DF3  0.227                        10      10.000    AVAIL                  
+     DF8  0.886                        39      10.000    AVAIL                  
 
 
 
    Queue     Maximum      Average       Total        Zero     Percent      Average      $Average     Qtable     Current
             Contents     Contents      Entries     Entries     Zeros      Time/Unit    Time/Unit     Number    Contents
-     QF1           1        0.000          44          43       97.7         0.000         0.000                      1
-     QF5           1        0.045          19          17       89.5         1.053        10.000                      0
-     QF7          29       13.068          71           3        4.2        80.986        84.559                     29
-     QF6          16        8.136          57           3        5.3        62.807        66.296                     16
-     QF4           6        2.136          45          12       26.7        20.889        28.485                      5
-     QF2           1        0.000          22          22      100.0         0.000         0.000                      0
-     QF3           1        0.000          43          43      100.0         0.000         0.000                      0
-     QF8          12        5.841          52           1        1.9        49.423        50.392                     12
-
-
-
+     QF1           1        0.000          10          10      100.0         0.000         0.000                      0
+     QF5           1        0.000           7           7      100.0         0.000         0.000                      0
+     QF7           8        1.773          29           9       31.0        26.897        39.000                      0
+     QF6           3        0.432          32          20       62.5         5.937        15.833                      0
+     QF4           1        0.068          23          20       87.0         1.304        10.000                      0
+     QF2           1        0.000          20          20      100.0         0.000         0.000                      0
+     QF3           1        0.000          10          10      100.0         0.000         0.000                      0
+     QF8           8        4.091          39           1        2.6        46.154        47.368                      0
+
   Random    Antithetic     Initial     Current      Sample   Chi-Square
   Stream      Variates    Position    Position       Count   Uniformity
-       1           OFF      100000      100225         225      0.74
-
+       1           OFF      100000      100123         123      0.23
+
+
+
 Status of Common Storage
 
-   22776 bytes available
-    9224 in use
-    9336 used (max)
+   31624 bytes available
+     376 in use
+    2824 used (max)
 
 Simulation complete.  Absolute Clock: 440.0000
 
 
 
-Total Block Executions: 1900
+Total Block Executions: 1060
 
-Blocks / second:        6158832
+Blocks / second:        9869652
 
-Microseconds / Block:   0.16
+Microseconds / Block:   0.10
 
 
 
 Elapsed Time Used (Sec)
  
 Pass1:           0.00
-Sym/Xref         0.00
+Sym/Xref         0.01
 Pass2:           0.00
 Load/Ctrl:       0.00
 Execution:       0.00
 Output:          0.00
 ---------------------
-Total:           0.00
+Total:           0.01
