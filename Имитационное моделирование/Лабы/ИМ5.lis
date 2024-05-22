@@ -1,0 +1,248 @@
+    Student GPSS/H Release 3.70 (CT256)     22 May 2024   17:50:10     File: C:\Users\AnvelirPortable\Desktop\������\���\3k6s\3k6s\������������ �������������\����\��5.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                 	SIMULATE
+        2     2                 	INITIAL X$NUM,0
+        3     3                 	INITIAL X$FNUM,1
+        4     4                  
+        5     5                 * C - Непрерывная функция.
+        6     6                 * D - Дискретная
+        7     7                 * E - Таблица
+        8     8                 * Число после буквы - количество пар
+        9     9                  
+       10    10                 DISTSVM	FUNCTION P2,E4
+       11    11                 1,SVM1/2,SVM2/3,SVM3/4,SVM4 *Возвращает заявку обратно
+       12    12                  
+       13    13                 TIME 	FUNCTION P2,E4
+ 
+*** WARNING  642 - The next source statement exceeds 133 characters; only the first 133 characters will be processed
+ 
+       14    14                 1,FN$FIR/2,FN$SEC/3,5/4,FN$FRTH *Преобразует заявки из каких-то СЭВМ во время работы в Ц
+       15    15                  
+       16    16                 *функции
+       17    17                 FIR	FUNCTION P1,D3
+       18    18                 .2,1/.4,3/1,4
+       19    19                  
+       20    20                 SEC	FUNCTION P1,D3
+       21    21                 .1,3/.5,5/1,4
+       22    22                  
+       23    23                 * Обновлено задание: Было добавлено значение для 0.8=4
+       24    24                 FRTH	FUNCTION P1,D2
+       25    25                 0.2,2/1,4
+       26    26                  
+       27    27                 *Распределение затрат времени для SVM4
+       28    28                 DIST4	FUNCTION X$FNUM,E3
+       29    29                 1,7/2,4/3,8
+       30    30                  
+       31    31              1  	GENERATE 4,,,4,15
+       32    32              2  	ASSIGN 2,1
+       33    33              3  SVM1	QUEUE QSVM1
+       34    34              4  	SEIZE SVM1
+       35    35              5  	DEPART QSVM1
+       36    36              6  	ADVANCE 5,3
+       37    37              7  	RELEASE SVM1
+       38    38              8  	TRANSFER ,CVM
+       39    39                  
+       40    40              9  	GENERATE 10,1,,,30
+       41    41             10  	SAVEVALUE NUM+,1
+       42    42             11  	ASSIGN 1,X$NUM
+       43    43             12  	ASSIGN 2,2
+       44    44             13  SVM2	QUEUE QSVM2
+       45    45             14  	SEIZE SVM2
+       46    46             15  	DEPART QSVM2
+       47    47             16  	ADVANCE 6
+       48    48             17  	RELEASE SVM2
+       49    49             18  	TRANSFER ,CVM
+       50    50                  
+       51    51             19  	GENERATE 2,,,2,25
+       52    52             20  	ASSIGN 2,3
+       53    53             21  SVM3	QUEUE QSVM3
+
+    Student GPSS/H Release 3.70 (CT256)     22 May 2024   17:50:10     File: C:\Users\AnvelirPortable\Desktop\������\���\3k6s\3k6s\������������ �������������\����\��5.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+       54    54             22  	SEIZE SVM3
+       55    55             23  	DEPART QSVM3
+       56    56             24  	ADVANCE 4
+       57    57             25  	RELEASE SVM3
+       58    58             26  	TRANSFER ,CVM
+       59    59                  
+       60    60             27  	GENERATE 3,,,3,35
+       61    61             28  	ASSIGN 2,4
+       62    62             29  SVM4	QUEUE QSVM4
+       63    63             30  	SEIZE SVM4
+       64    64             31  	DEPART QSVM4
+       65    65             32  	ADVANCE FN$DIST4
+       66    66             33  	SAVEVALUE FNUM+,1
+       67    67             34  	RELEASE SVM4
+       68    68             35  	TRANSFER ,CVM
+       69    69                  
+       70    70             36  CVM	QUEUE QCVM
+       71    71             37  	SEIZE CVM
+       72    72             38  	DEPART QCVM
+       73    73             39  	ADVANCE FN$TIME
+       74    74             40  	RELEASE CVM
+       75    75             41  	TRANSFER ,FN$DISTSVM
+       76    76                  
+       77    77             42  	GENERATE 80
+       78    78             43  	TERMINATE 1
+       79    79                 	START 1
+       80    80                 	END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 3=SVM1          13=SVM2         21=SVM3         29=SVM4         36=CVM
+
+           Queues: 1=QSVM1         2=QSVM2         3=QSVM3         4=QSVM4         5=QCVM
+
+        Functions: 1=DISTSVM       2=TIME          3=FIR           4=SEC           5=FRTH          6=DIST4
+
+ Fullword Savexes: 1=NUM           2=FNUM
+
+       Parameters: 1               2
+
+
+*** Warning: The following entities have been defined but not explicitly referenced:
+
+           Blocks:  SVM1      SVM2      SVM3      SVM4    
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+SVM1         3              Absolute        11
+SVM2        13              Absolute        11
+SVM3        21              Absolute        11
+SVM4        29              Absolute        11
+ 
+CVM         36          70  Block           38    49    58    68
+SVM1         3          33  Block       
+SVM2        13          44  Block       
+SVM3        21          53  Block       
+SVM4        29          62  Block       
+ 
+CVM         36              Facility        71    74
+SVM1         3              Facility        34    37
+SVM2        13              Facility        45    48
+SVM3        21              Facility        54    57
+SVM4        29              Facility        63    67
+ 
+QCVM         5              Queue           70    72
+QSVM1        1              Queue           33    35
+QSVM2        2              Queue           44    46
+QSVM3        3              Queue           53    55
+QSVM4        4              Queue           62    64
+ 
+DIST4        6          28  Function        65
+DISTSVM      1          10  Function        75
+FIR          3          17  Function        14
+FRTH         5          24  Function        14
+SEC          4          20  Function        14
+TIME         2          13  Function        73
+ 
+FNUM         2              Fullword Svx     3    28    66
+NUM          1              Fullword Svx     2    41    42
+ 
+1            1              Parameter       17    20    24    42
+2            2              Parameter       10    13    32    43    52    61
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:     1712
+Compiled Data:      328
+Miscellaneous:        0
+Entities:          2559
+Common:           10000
+-----------------------
+Total:            14599
+
+GPSS/H Model Size:
+
+Control Statements     11
+Blocks                 43
+
+
+
+Simulation begins.
+
+Relative Clock: 80.0000   Absolute Clock: 80.0000
+
+
+
+Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total
+1                     4  11                    8  SVM3                  5  31                   11  41                   22 
+2                     4  12                    8  22                    5  32          1        11  42                    1 
+SVM1                  4  SVM2        6        18  23                    5  33                   10  43                    1 
+4                     4  14                   12  24                    5  34                   10 
+5                     4  15                   12  25                    5  35                   10 
+6                     4  16          1        12  26                    5  CVM         7        30 
+7                     4  17                   11  27                    3  37                   23 
+8                     4  18                   11  28                    3  38                   23 
+9                     8  19                    2  SVM4        1        12  39          1        23 
+10                    8  20                    2  30                   11  40                   22 
+
+
+
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+    SVM1  0.260                         4       5.192    AVAIL                  
+    SVM2  0.838                        12       5.588    AVAIL               16 
+    SVM3  0.250                         5       4.000    AVAIL                  
+    SVM4  0.962                        11       7.000    AVAIL                7 
+     CVM  0.925                        23       3.217    AVAIL                4 
+
+
+
+   Queue     Maximum      Average       Total        Zero     Percent      Average      $Average     Qtable     Current
+            Contents     Contents      Entries     Entries     Zeros      Time/Unit    Time/Unit     Number    Contents
+   QSVM1           1        0.082           4           1       25.0         1.647         2.197                      0
+   QSVM2           6        1.805          18           2       11.1         8.022         9.024                      6
+   QSVM3           1        0.025           5           4       80.0         0.400         2.000                      0
+   QSVM4           2        1.337          12           1        8.3         8.917         9.727                      1
+    QCVM           8        5.308          30           2        6.7        14.154        15.165                      7
+
+
+
+Non-zero Fullword Savevalues:  (NAME : VALUE)
+
+     NUM:           8,     FNUM:          11
+
+
+
+  Random    Antithetic     Initial     Current      Sample   Chi-Square
+  Stream      Variates    Position    Position       Count   Uniformity
+       1           OFF      100000      100013          13       N/A
+
+
+
+Status of Common Storage
+
+    7080 bytes available
+    2920 in use
+    3032 used (max)
+
+Simulation complete.  Absolute Clock: 80.0000
+
+
+
+Total Block Executions: 400
+
+Blocks / second:        2318841
+
+Microseconds / Block:   0.43
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.00
+Output:          0.00
+---------------------
+Total:           0.00

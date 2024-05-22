@@ -1,0 +1,148 @@
+    Student GPSS/H Release 3.70 (CT256)     17 Apr 2024   15:46:47     File: C:\Users\AnvelirPortable\Desktop\Работа\МАИ\3k6s\3k6s\Имитационное моделирование\Лабы\ИМ4.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                 	SIMULATE
+        2     2                 	INITIAL X$MAX,15
+        3     3                 	
+        4     4              1  	GENERATE ,,,1,10
+        5     5              2  MET1	SPLIT 1,MET
+        6     6              3  	ADVANCE 7
+        7     7              4  	TRANSFER ,MET1
+        8     8                  
+        9     9              5  MET 	TEST L CH$AAA,X$MAX,MET2
+       10    10              6  	LINK AAA,FIFO
+       11    11                  
+       12    12              7  MET2 	TERMINATE
+       13    13                 	
+       14    14              8  	GENERATE ,,,1,5
+       15    15              9  MET3	TEST G CH$AAA,0
+       16    16             10  	SEIZE CPU
+       17    17             11  	UNLINK AAA,MET2,1
+       18    18             12  	ADVANCE 15,8
+       19    19             13  	RELEASE CPU
+       20    20                  
+       21    21             14  	TRANSFER .95,,MET3
+       22    22             15  	UNLINK AAA,MET2,ALL
+       23    23             16  	TRANSFER ,MET3
+       24    24                  
+       25    25             17  	GENERATE 300000
+       26    26             18  	TERMINATE 1
+       27    27                 	START 1
+       28    28                 	END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 1=CPU
+
+ Fullword Savexes: 1=MAX
+
+      User Chains: 1=AAA
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+MET          5           9  Block            5
+MET1         2           5  Block            7
+MET2         7          12  Block            9    17    22
+MET3         9          15  Block           21    23
+ 
+CPU          1              Facility        16    19
+ 
+MAX          1              Fullword Svx     2     9
+ 
+AAA          1              User Chain       9    10    15    17    22
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:     1020
+Compiled Data:      140
+Miscellaneous:        0
+Entities:           376
+Common:           10000
+-----------------------
+Total:            11536
+
+
+
+GPSS/H Model Size:
+
+Control Statements      4
+Blocks                 18
+
+
+
+Simulation begins.
+
+Relative Clock: 3.0000E+05   Absolute Clock: 3.0000E+05
+
+
+
+Block Current     Total  Block Current     Total  
+1                     1  11                19727 
+MET1              85716  12          1     19727 
+3           1     42858  13                19726 
+4                 42857  14                19726 
+MET               42858  15                 1002 
+6          10     31085  16                 1002 
+MET2              42848  17                    1 
+8                     1  18                    1 
+MET3              19727 
+10                19727 
+
+
+
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+     CPU  0.988                     19727      15.030    AVAIL                2 
+
+
+
+User Chain   Entries    Average      Average     Current     Maximum
+                       Time/Xact    Contents    Contents    Contents
+     AAA       31085     102.493      10.620          10          15 
+
+
+
+Non-zero Fullword Savevalues:  (NAME : VALUE)
+
+     MAX:          15
+
+
+
+  Random    Antithetic     Initial     Current      Sample   Chi-Square
+  Stream      Variates    Position    Position       Count   Uniformity
+       1           OFF      100000      139453       39453      0.98
+
+
+
+Status of Common Storage
+
+    8184 bytes available
+    1816 in use
+    2488 used (max)
+
+Simulation complete.  Absolute Clock: 3.0000E+05
+
+
+
+Total Block Executions: 408590
+
+Blocks / second:        13231027
+
+Microseconds / Block:   0.08
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.03
+Output:          0.00
+---------------------
+Total:           0.03

@@ -1,0 +1,184 @@
+    Student GPSS/H Release 3.70 (CT256)     22 May 2024   19:30:24     File: C:\Users\AnvelirPortable\Desktop\������\���\3k6s\3k6s\������������ �������������\����\��6.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                 	SIMULATE
+        2     2                  
+        3     3                 *У 4-го транзакта повышенный приоритет (k=4)
+        4     4                 PRIOR FUNCTION P1,E4
+        5     5                 1,1/2,1/3,1/4,100
+        6     6                  
+        7     7                 CVMTIME FUNCTION P1,E4       
+        8     8                 1,FN$FIRDIST/2,FN$SECDIST/3,FN$THRDIST/4,2
+        9     9                  
+       10    10                 SVMTIME FUNCTION P1,E4   
+       11    11                 1,5/2,6/3,4/4,7
+       12    12                  
+       13    13                 FIRDIST FUNCTION RN1,C3
+       14    14                 .2,1/.4,3/1,4
+       15    15                  
+       16    16                 SECDIST FUNCTION RN2,C3
+       17    17                 .1,3/.5,5/1,4
+       18    18                  
+       19    19                 THRDIST FUNCTION RN3,C2
+       20    20                 .5,5/1,3
+       21    21                  
+       22    22                 *Логика такая:
+       23    23                 * Каждый транзакт проходит свой собственный путь благодаря параметрам,
+       24    24                 * Но код на всё - один.
+       25    25                 * Он динамически создаёт соответствующие транзакту SVM'ы,
+       26    26                 * И позволяет здорово уменьшить количество кода, и, главное,
+       27    27                 * Сделать его динамическим.
+       28    28                  
+       29    29              1  	GENERATE  ,,,1
+       30    30              2  	SPLIT     4,DEV1,1
+       31    31              3  DEV1	PRIORITY  FN$PRIOR
+       32    32              4  DEV2	SEIZE     P1 *Номер устройства - это номер первого параметра в транзакте.
+ 
+*** WARNING  642 - The next source statement exceeds 133 characters; only the first 133 characters will be processed
+ 
+       33    33                 *Такая запись позволяет очень легко и просто расширить количество исп. у�
+       34    34              5  	ADVANCE   FN$SVMTIME *предварительная работа
+       35    35              6  	RELEASE   P1
+       36    36                 *---CVM
+       37    37              7  	QUEUE     QCVM
+       38    38              8  	PREEMPT   CVM,PR
+       39    39              9  	SEIZE	  CVM
+       40    40             10  	DEPART    QCVM
+       41    41             11  	ADVANCE   FN$CVMTIME
+       42    42             12  	RELEASE	  CVM
+       43    43             13  	RETURN    DEV2
+       44    44                 *Возвращаемся в (как бы) соответствующий SVM
+       45    45             14  	TRANSFER  ,DEV1
+       46    46                  
+       47    47             15  	GENERATE  1000
+       48    48             16  	TERMINATE 1
+       49    49                 	START     1
+       50    50                 	END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 1=CVM           4=DEV2
+
+           Queues: 1=QCVM
+
+        Functions: 1=PRIOR         2=CVMTIME       3=FIRDIST       4=SECDIST       5=THRDIST       6=SVMTIME
+
+       Parameters: 1
+
+   Random Numbers: 1               2               3
+
+
+*** Warning: The following entities have been defined but not explicitly referenced:
+
+           Blocks:  DEV2    
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+DEV1         3          31  Block           30    45
+DEV2         4          32  Block       
+ 
+CVM          1              Facility        38    39    42
+DEV2         4              Facility        43
+ 
+QCVM         1              Queue           37    40
+ 
+CVMTIME      2           7  Function        41
+FIRDIST      3          13  Function         8
+PRIOR        1           4  Function        31
+SECDIST      4          16  Function         8
+SVMTIME      6          10  Function        34
+THRDIST      5          19  Function         8
+ 
+1            1              Parameter        4     7    10    30    32    35
+ 
+1            1              Random Nmbr     13
+2            2              Random Nmbr     16
+3            3              Random Nmbr     19
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:     1698
+Compiled Data:      316
+Miscellaneous:        0
+Entities:          1666
+Common:           10000
+-----------------------
+Total:            13680
+
+
+
+GPSS/H Model Size:
+
+Control Statements      9
+Blocks                 16
+
+
+
+Simulation begins.
+
+Relative Clock: 1000.0000   Absolute Clock: 1000.0000
+
+
+
+Block Current     Total  Block Current     Total  
+1                     1  11                    0 
+2                     5  12                    0 
+DEV1                  5  13                    0 
+DEV2                  5  14                    0 
+5                     5  15                    1 
+6                     5  16                    1 
+7           3         5 
+8           2         2 
+9                     0 
+10                    0 
+
+
+
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+     CVM  1.000                         3     333.333    AVAIL                          5   
+       2  0.006                         1       6.000    AVAIL                  
+       3  0.004                         1       4.000    AVAIL                  
+    DEV2  0.007                         1       7.000    AVAIL                  
+       5  0.007                         1       7.000    AVAIL                  
+
+
+
+   Queue     Maximum      Average       Total        Zero     Percent      Average      $Average     Qtable     Current
+            Contents     Contents      Entries     Entries     Zeros      Time/Unit    Time/Unit     Number    Contents
+    QCVM           5        4.971           5           0                  994.200       994.200                      5
+
+
+
+Status of Common Storage
+
+    8872 bytes available
+    1128 in use
+    1240 used (max)
+
+Simulation complete.  Absolute Clock: 1000.0000
+
+
+
+Total Block Executions: 35
+
+Blocks / second:        683594
+
+Microseconds / Block:   1.46
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.00
+Output:          0.00
+---------------------
+Total:           0.00

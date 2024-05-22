@@ -1,0 +1,135 @@
+    Student GPSS/H Release 3.70 (CT256)     17 Apr 2024   15:42:34     File: C:\Users\AnvelirPortable\Desktop\Работа\МАИ\3k6s\3k6s\Имитационное моделирование\Лабы\ИМ3.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                 	SIMULATE
+        2     2                 	INITIAL X$BUF,0
+        3     3                 	INITIAL X$MAX,15
+        4     4                  
+        5     5              1  	GENERATE ,,,1,10
+        6     6              2  MET1	SAVEVALUE BUF+,1
+        7     7              3  MET2	ADVANCE 7
+        8     8              4  	TEST L X$BUF,X$MAX,MET2
+        9     9              5  	TRANSFER ,MET1
+       10    10                  
+       11    11              6  	GENERATE ,,,1,5
+       12    12              7  MET3	TEST G X$BUF,0
+       13    13              8  	SEIZE CPU
+       14    14              9  	SAVEVALUE BUF-,1
+       15    15             10  	ADVANCE 15,8
+       16    16             11  	RELEASE CPU
+       17    17                  
+       18    18             12  	TRANSFER .95,,MET3
+       19    19             13  	SAVEVALUE BUF,0
+       20    20             14  	TRANSFER ,MET3
+       21    21                  
+       22    22             15  	GENERATE 300000
+       23    23             16  	TERMINATE 1
+       24    24                 	START 1
+       25    25                 	END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 1=CPU
+
+ Fullword Savexes: 1=BUF           2=MAX
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+MET1         2           6  Block            9
+MET2         3           7  Block            8
+MET3         7          12  Block           18    20
+ 
+CPU          1              Facility        13    16
+ 
+BUF          1              Fullword Svx     2     6     8    12    14    19
+MAX          2              Fullword Svx     3     8
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:      396
+Compiled Data:      120
+Miscellaneous:        0
+Entities:           300
+Common:           10000
+-----------------------
+Total:            10816
+
+
+
+GPSS/H Model Size:
+
+Control Statements      5
+Blocks                 16
+
+
+
+Simulation begins.
+
+Relative Clock: 3.0000E+05   Absolute Clock: 3.0000E+05
+
+
+
+Block Current     Total  Block Current     Total  
+1                     1  11                19726 
+MET1              31085  12                19726 
+MET2        1     42858  13                 1002 
+4                 42857  14                 1002 
+5                 31084  15                    1 
+6                     1  16                    1 
+MET3              19727 
+8                 19727 
+9                 19727 
+10          1     19727 
+
+
+
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+     CPU  0.988                     19727      15.030    AVAIL                2 
+
+
+
+Non-zero Fullword Savevalues:  (NAME : VALUE)
+
+     BUF:          10,      MAX:          15
+
+
+
+  Random    Antithetic     Initial     Current      Sample   Chi-Square
+  Stream      Variates    Position    Position       Count   Uniformity
+       1           OFF      100000      139453       39453      0.98
+
+
+
+Status of Common Storage
+
+    9336 bytes available
+     664 in use
+     776 used (max)
+
+Simulation complete.  Absolute Clock: 3.0000E+05
+
+
+
+Total Block Executions: 268252
+
+Blocks / second:        24697282
+
+Microseconds / Block:   0.04
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.01
+Output:          0.00
+---------------------
+Total:           0.01

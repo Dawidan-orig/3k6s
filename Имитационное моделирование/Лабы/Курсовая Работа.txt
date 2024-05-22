@@ -1,0 +1,187 @@
+* Что есть что:
+* ti - интервал поступления заявок на АРМ
+* Дti - время поступления первой заявки
+* ni - количество заявок
+* tki - время на КММ с АРМi
+* T - Время обработки заявок
+
+* Шпаргалка о функциях:
+* Первый аргумент:
+* RN{n} - случайный выбор от 0 до n
+* Переменная.
+* P{n} - взятие n параметра транзакта
+* Второй:
+* C - Непрерывная функция.
+* D - Дискретная
+* E - Таблица
+* Число после буквы - количество пар
+
+* Шпаргалка об Generate
+* Частота создания
+* Случайное смещение от частоты
+* встроенный Advance
+* Число транзактов
+* Приоритет
+* Число параметров
+* Формат параметров
+
+* Шпаргалка об Advance
+* Добавочное число (Либо число как есть)
+* Значение случайного интервала от
+
+* Шпаргалка об Transfer
+* вероятность
+* иначе
+* Если попало в указанную вероятность
+
+* шаблон занятия устройства
+*	QUEUE Q
+*	SEIZE T
+*	DEPART Q
+*	ADVANCE 
+*	RELEASE T
+
+*===========ПРОГРАММА=================
+
+* P1 = ИЗ КАКОГО ТЕРМИНАЛА ПРИШЛИ
+* P2 = ИЗ CVK ИЛИ ARM ПРИШЛИ
+
+	REALLOCATE COM,32720
+	SIMULATE
+
+* ===ПЕРЕМЕННЫЕ===
+	INITIAL X$TOTAL,0
+
+	INITIAL X$FIRTOTAL,0
+	INITIAL X$SECTOTAL,0
+	INITIAL X$THRTOTAL,0
+
+	INITIAL X$FIRFLICK,0
+	INITIAL X$SECFLICK,0
+	INITIAL X$THRFLICK,0
+* ===ФУНКЦИИ===
+*Подсчёт количества транзактов по первому параметру
+COUNTALL FUNCTION P1,E3
+1,FIRTOTAL/2,SECTOTAL/3,THRTOTAL
+
+*подсчёт счётчиков сброса по первому параметру
+COUNTFLI FUNCTION P1,E3
+1,FIRFLICK/2,SECFLICK/3,THRFLICK
+
+*Распределитель на счётчики сброса
+DISTRFLI FUNCTION P1,E3
+1,5/2,4/3,3
+
+*Возврат в сооветствующий T
+TOT FUNCTION P1,E3
+1,TONE/2,TTWO/3,TTHR
+
+*Распределить времени выполнения для ARM
+TIMEARM FUNCTION RN1,D3
+.1,16/.8,25/1,30
+
+*Рапределитель для KMM у транзактов, пришедших с T3
+TIMEKMMT FUNCTION RN2,D2
+.2,3/1,1
+
+*Распределитель времени для KMM
+TIMEKMM FUNCTION P1,E3
+1,2/2,3/3,FN$TIMEKMMT
+
+*==МЕТКИ===
+*---УНИЧТОЖЕНИЕ---
+KILL	SAVEVALUE FN$COUNTFLI,0 *аннулируем соответствующий счётчик
+	TERMINATE
+
+*---T1---
+	GENERATE 120,5,,57
+	ASSIGN 1,1
+TONE	QUEUE QT1
+	SEIZE T1
+	DEPART QT1
+	PRIORITY 1
+	ADVANCE 20,20 *(30+-10)
+	RELEASE T1
+	TRANSFER ,ARM1
+
+*---T2---
+	GENERATE 200,,,18
+	ASSIGN 1,2
+TTWO	QUEUE QT2
+	SEIZE T2
+	DEPART QT2
+	PRIORITY 1
+	ADVANCE 10,9 *10,23 (33+-5) !!!ВЫЗЫВАЕТ ОШИБКУ!!!
+	RELEASE T2
+	TRANSFER ,ARM2
+
+*---T3---
+	GENERATE 90,15,,45
+	ASSIGN 1,3
+TTHR	QUEUE QT3
+	SEIZE T3
+	DEPART QT3
+	PRIORITY 1
+	ADVANCE 24,23 *(35+-12)
+	RELEASE T3
+	TRANSFER ,ARM3
+	
+*---ARM1---
+ARM1	QUEUE QARM1
+	SEIZE ARM1
+	DEPART QARM1
+	ADVANCE FN$TIMEARM
+	RELEASE ARM1
+	ASSIGN 2,0
+	PRIORITY 5
+	TRANSFER .3,TONE,KMML
+
+*---ARM2---
+ARM2	QUEUE QARM2
+	SEIZE ARM2
+	DEPART QARM2
+	ADVANCE FN$TIMEARM
+	RELEASE ARM2
+	ASSIGN 2,0
+	PRIORITY 5
+	TRANSFER .3,TTWO,KMML
+
+*---ARM3---
+ARM3	QUEUE QARM3
+	SEIZE ARM3
+	DEPART QARM3
+	ADVANCE FN$TIMEARM
+	RELEASE ARM3
+	ASSIGN 2,0
+	PRIORITY 5
+	TRANSFER .3,TTHR,KMML
+
+*---KMM---
+KMML	QUEUE QKMM
+	LINK KMMBUNDL,FIFO,KMMG
+KMMG	DEPART QKMM
+	ADVANCE FN$TIMEKMM
+	UNLINK KMMBUNDL,KMMG,1
+	TEST E P2,1,FN$TOT *Второй параметер показывает, откуда пришли. 0=ARM, 1=CVK
+	TRANSFER ,CVK
+
+*---CVK---
+CVK	ASSIGN 2,1
+	QUEUE QCVK
+	SEIZE CVK
+	DEPART QCVK
+	ADVANCE 40,5
+	RELEASE CVK
+	ASSIGN 2,1
+	SAVEVALUE FN$COUNTFLI+,1
+	SAVEVALUE FN$COUNTALL+,1
+	SAVEVALUE X$TOTAL+,1
+	TEST NE FN$COUNTFLI,FN$DISTRFLI,KILL
+	PRIORITY 4
+	TEST L X$TOTAL,300,TOEND
+	TRANSFER ,KMML
+
+*===КОНЕЦ===
+TOEND	TERMINATE 1
+	START 1
+	END

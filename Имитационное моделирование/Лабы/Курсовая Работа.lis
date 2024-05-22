@@ -1,0 +1,425 @@
+    Student GPSS/H Release 3.70 (CT256)     22 May 2024   23:33:35     File: C:\Users\AnvelirPortable\Desktop\������\���\3k6s\3k6s\������������ �������������\����\�������� ������.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                 * Что есть что:
+        2     2                 * ti - интервал поступления заявок на АРМ
+        3     3                 * Дti - время поступления первой заявки
+        4     4                 * ni - количество заявок
+        5     5                 * tki - время на КММ с АРМi
+        6     6                 * T - Время обработки заявок
+        7     7                  
+        8     8                 * Шпаргалка о функциях:
+        9     9                 * Первый аргумент:
+       10    10                 * RN{n} - случайный выбор от 0 до n
+       11    11                 * Переменная.
+       12    12                 * P{n} - взятие n параметра транзакта
+       13    13                 * Второй:
+       14    14                 * C - Непрерывная функция.
+       15    15                 * D - Дискретная
+       16    16                 * E - Таблица
+       17    17                 * Число после буквы - количество пар
+       18    18                  
+       19    19                 * Шпаргалка об Generate
+       20    20                 * Частота создания
+       21    21                 * Случайное смещение от частоты
+       22    22                 * встроенный Advance
+       23    23                 * Число транзактов
+       24    24                 * Приоритет
+       25    25                 * Число параметров
+       26    26                 * Формат параметров
+       27    27                  
+       28    28                 * Шпаргалка об Advance
+       29    29                 * Добавочное число (Либо число как есть)
+       30    30                 * Значение случайного интервала от
+       31    31                  
+       32    32                 * Шпаргалка об Transfer
+       33    33                 * вероятность
+       34    34                 * иначе
+       35    35                 * Если попало в указанную вероятность
+       36    36                  
+       37    37                 * шаблон занятия устройства
+       38    38                 *	QUEUE Q
+       39    39                 *	SEIZE T
+       40    40                 *	DEPART Q
+       41    41                 *	ADVANCE 
+       42    42                 *	RELEASE T
+       43    43                  
+       44    44                 *===========ПРОГРАММА=================
+       45    45                  
+       46    46                 * P1 = ИЗ КАКОГО ТЕРМИНАЛА ПРИШЛИ
+       47    47                 * P2 = ИЗ CVK ИЛИ ARM ПРИШЛИ
+       48    48                  
+       49    49                 	REALLOCATE COM,32720
+       50    50                 	SIMULATE
+       51    51                  
+       52    52                 * ===ПЕРЕМЕННЫЕ===
+       53    53                 	INITIAL X$TOTAL,0
+       54    54                  
+       55    55                 	INITIAL X$FIRTOTAL,0
+       56    56                 	INITIAL X$SECTOTAL,0
+
+    Student GPSS/H Release 3.70 (CT256)     22 May 2024   23:33:35     File: C:\Users\AnvelirPortable\Desktop\������\���\3k6s\3k6s\������������ �������������\����\�������� ������.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+       57    57                 	INITIAL X$THRTOTAL,0
+       58    58                  
+       59    59                 	INITIAL X$FIRFLICK,0
+       60    60                 	INITIAL X$SECFLICK,0
+       61    61                 	INITIAL X$THRFLICK,0
+       62    62                 * ===ФУНКЦИИ===
+       63    63                 *Подсчёт количества транзактов по первому параметру
+       64    64                 COUNTALL FUNCTION P1,E3
+       65    65                 1,FIRTOTAL/2,SECTOTAL/3,THRTOTAL
+       66    66                  
+       67    67                 *подсчёт счётчиков сброса по первому параметру
+       68    68                 COUNTFLI FUNCTION P1,E3
+       69    69                 1,FIRFLICK/2,SECFLICK/3,THRFLICK
+       70    70                  
+       71    71                 *Распределитель на счётчики сброса
+       72    72                 DISTRFLI FUNCTION P1,E3
+       73    73                 1,5/2,4/3,3
+       74    74                  
+       75    75                 *Возврат в сооветствующий T
+       76    76                 TOT FUNCTION P1,E3
+       77    77                 1,TONE/2,TTWO/3,TTHR
+       78    78                  
+       79    79                 *Распределить времени выполнения для ARM
+       80    80                 TIMEARM FUNCTION RN1,D3
+       81    81                 .1,16/.8,25/1,30
+       82    82                  
+       83    83                 *Рапределитель для KMM у транзактов, пришедших с T3
+       84    84                 TIMEKMMT FUNCTION RN2,D2
+       85    85                 .2,3/1,1
+       86    86                  
+       87    87                 *Распределитель времени для KMM
+       88    88                 TIMEKMM FUNCTION P1,E3
+       89    89                 1,2/2,3/3,FN$TIMEKMMT
+       90    90                  
+       91    91                 *==МЕТКИ===
+       92    92                 *---УНИЧТОЖЕНИЕ---
+       93    93              1  KILL	SAVEVALUE FN$COUNTFLI,0 *аннулируем соответствующий счётчик
+       94    94              2  	TERMINATE
+       95    95                  
+       96    96                 *---T1---
+       97    97              3  	GENERATE 120,5,,57
+       98    98              4  	ASSIGN 1,1
+       99    99              5  TONE	QUEUE QT1
+      100   100              6  	SEIZE T1
+      101   101              7  	DEPART QT1
+      102   102              8  	PRIORITY 1
+      103   103              9  	ADVANCE 20,20 *(30+-10)
+      104   104             10  	RELEASE T1
+      105   105             11  	TRANSFER ,ARM1
+      106   106                  
+      107   107                 *---T2---
+      108   108             12  	GENERATE 200,,,18
+      109   109             13  	ASSIGN 1,2
+      110   110             14  TTWO	QUEUE QT2
+      111   111             15  	SEIZE T2
+      112   112             16  	DEPART QT2
+
+    Student GPSS/H Release 3.70 (CT256)     22 May 2024   23:33:35     File: C:\Users\AnvelirPortable\Desktop\������\���\3k6s\3k6s\������������ �������������\����\�������� ������.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+      113   113             17  	PRIORITY 1
+      114   114             18  	ADVANCE 10,9 *10,23 (33+-5) !!!ВЫЗЫВАЕТ ОШИБКУ!!!
+      115   115             19  	RELEASE T2
+      116   116             20  	TRANSFER ,ARM2
+      117   117                  
+      118   118                 *---T3---
+      119   119             21  	GENERATE 90,15,,45
+      120   120             22  	ASSIGN 1,3
+      121   121             23  TTHR	QUEUE QT3
+      122   122             24  	SEIZE T3
+      123   123             25  	DEPART QT3
+      124   124             26  	PRIORITY 1
+      125   125             27  	ADVANCE 24,23 *(35+-12)
+      126   126             28  	RELEASE T3
+      127   127             29  	TRANSFER ,ARM3
+      128   128                 	
+      129   129                 *---ARM1---
+      130   130             30  ARM1	QUEUE QARM1
+      131   131             31  	SEIZE ARM1
+      132   132             32  	DEPART QARM1
+      133   133             33  	ADVANCE FN$TIMEARM
+      134   134             34  	RELEASE ARM1
+      135   135             35  	ASSIGN 2,0
+      136   136             36  	PRIORITY 5
+      137   137             37  	TRANSFER .3,TONE,KMML
+      138   138                  
+      139   139                 *---ARM2---
+      140   140             38  ARM2	QUEUE QARM2
+      141   141             39  	SEIZE ARM2
+      142   142             40  	DEPART QARM2
+      143   143             41  	ADVANCE FN$TIMEARM
+      144   144             42  	RELEASE ARM2
+      145   145             43  	ASSIGN 2,0
+      146   146             44  	PRIORITY 5
+      147   147             45  	TRANSFER .3,TTWO,KMML
+      148   148                  
+      149   149                 *---ARM3---
+      150   150             46  ARM3	QUEUE QARM3
+      151   151             47  	SEIZE ARM3
+      152   152             48  	DEPART QARM3
+      153   153             49  	ADVANCE FN$TIMEARM
+      154   154             50  	RELEASE ARM3
+      155   155             51  	ASSIGN 2,0
+      156   156             52  	PRIORITY 5
+      157   157             53  	TRANSFER .3,TTHR,KMML
+      158   158                  
+      159   159                 *---KMM---
+      160   160             54  KMML	QUEUE QKMM
+      161   161             55  	LINK KMMBUNDL,FIFO,KMMG
+      162   162             56  KMMG	DEPART QKMM
+      163   163             57  	ADVANCE FN$TIMEKMM
+      164   164             58  	UNLINK KMMBUNDL,KMMG,1
+      165   165             59  	TEST E P2,1,FN$TOT *Второй параметер показывает, откуда пришли. 0=ARM, 1=CVK
+      166   166             60  	TRANSFER ,CVK
+      167   167                  
+      168   168                 *---CVK---
+
+    Student GPSS/H Release 3.70 (CT256)     22 May 2024   23:33:35     File: C:\Users\AnvelirPortable\Desktop\������\���\3k6s\3k6s\������������ �������������\����\�������� ������.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+      169   169             61  CVK	ASSIGN 2,1
+      170   170             62  	QUEUE QCVK
+      171   171             63  	SEIZE CVK
+      172   172             64  	DEPART QCVK
+      173   173             65  	ADVANCE 40,5
+      174   174             66  	RELEASE CVK
+      175   175             67  	ASSIGN 2,1
+      176   176             68  	SAVEVALUE FN$COUNTFLI+,1
+      177   177             69  	SAVEVALUE FN$COUNTALL+,1
+      178   178             70  	SAVEVALUE X$TOTAL+,1
+      179   179             71  	TEST NE FN$COUNTFLI,FN$DISTRFLI,KILL
+      180   180             72  	PRIORITY 4
+      181   181             73  	TEST L X$TOTAL,300,TOEND
+      182   182             74  	TRANSFER ,KMML
+      183   183                  
+      184   184                 *===КОНЕЦ===
+      185   185             75  TOEND	TERMINATE 1
+      186   186                 	START 10000
+      187   187                 	END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 1=T1            2=T2            3=T3            30=ARM1         38=ARM2         46=ARM3         
+                   61=CVK
+
+           Queues: 1               2               3               4=QARM1         5=QARM2         6=QARM3         
+                   7=QKMM          8=QCVK
+
+        Functions: 1=COUNTALL      2=COUNTFLI      3=DISTRFLI      4=TOT           5=TIMEARM       6=TIMEKMMT      
+                   7=TIMEKMM
+
+ Fullword Savexes: 1=TOTAL         2=FIRTOTAL      3=SECTOTAL      4=THRTOTAL      5=FIRFLICK      6=SECFLICK      
+                   7=THRFLICK
+
+      User Chains: 1=KMMBUNDL
+
+       Parameters: 1               2
+
+   Random Numbers: 1               2
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+FIRFLICK     5              Absolute        69
+FIRTOTAL     2              Absolute        65
+SECFLICK     6              Absolute        69
+SECTOTAL     3              Absolute        65
+THRFLICK     7              Absolute        69
+THRTOTAL     4              Absolute        65
+TONE         5              Absolute        77
+TTHR        23              Absolute        77
+TTWO        14              Absolute        77
+ 
+ARM1        30         130  Block          105
+ARM2        38         140  Block          116
+ARM3        46         150  Block          127
+CVK         61         169  Block          166
+KILL         1          93  Block          179
+KMMG        56         162  Block          161   164
+KMML        54         160  Block          137   147   157   182
+TOEND       75         185  Block          181
+TONE         5          99  Block          137
+TTHR        23         121  Block          157
+TTWO        14         110  Block          147
+ 
+ARM1        30              Facility       131   134
+ARM2        38              Facility       141   144
+ARM3        46              Facility       151   154
+CVK         61              Facility       171   174
+T1           1              Facility       100   104
+T2           2              Facility       111   115
+T3           3              Facility       122   126
+ 
+1            1              Queue           99   101
+2            2              Queue          110   112
+3            3              Queue          121   123
+QARM1        4              Queue          130   132
+QARM2        5              Queue          140   142
+QARM3        6              Queue          150   152
+QCVK         8              Queue          170   172
+QKMM         7              Queue          160   162
+ 
+COUNTALL     1          64  Function       177
+COUNTFLI     2          68  Function        93   176   179
+DISTRFLI     3          72  Function       179
+TIMEARM      5          80  Function       133   143   153
+TIMEKMM      7          88  Function       163
+TIMEKMMT     6          84  Function        89
+TOT          4          76  Function       165
+ 
+FIRFLICK     5              Fullword Svx    59
+FIRTOTAL     2              Fullword Svx    55
+SECFLICK     6              Fullword Svx    60
+SECTOTAL     3              Fullword Svx    56
+THRFLICK     7              Fullword Svx    61
+THRTOTAL     4              Fullword Svx    57
+TOTAL        1              Fullword Svx    53   178   181
+ 
+KMMBUNDL     1              User Chain     161   164
+ 
+1            1              Parameter       64    68    72    76    88    98   109   120
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+2            2              Parameter      135   145   155   165   169   175
+ 
+1            1              Random Nmbr     80
+2            2              Random Nmbr     84
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:     3148
+Compiled Data:      200
+Miscellaneous:        0
+Entities:          5727
+Common:           32720
+-----------------------
+Total:            41795
+
+
+
+GPSS/H Model Size:
+
+Control Statements     17
+Blocks                 75
+
+
+
+Simulation begins.
+
+Error number 422 - Queue # referenced is outside 1...N range allocated
+
+
+Xact 3 from 22 (TTWO+8) to 23 (TTHR)    Absclock: 89.9806    Relclock: 89.9806    TTG: 10000
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+3        22       TTHR     CEC                  89.9806     89.9806          0               001F8E30
+
+                     1           2           3           4           5           6           7           8           9          10
+PH   1-10            3           0           0           0           0           0           0           0           0           0
+
+
+
+Relative Clock: 89.9806   Absolute Clock: 89.9806
+
+
+
+Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total
+KILL                  0  11                    0  21                    1  31                    0  41                    0 
+2                     0  12                    0  22                    1  32                    0  42                    0 
+3                     0  13                    0  TTHR                  0  33                    0  43                    0 
+4                     0  TTWO                  0  24                    0  34                    0  44                    0 
+TONE                  0  15                    0  25                    0  35                    0  45                    0 
+6                     0  16                    0  26                    0  36                    0  ARM3                  0 
+7                     0  17                    0  27                    0  37                    0  47                    0 
+8                     0  18                    0  28                    0  ARM2                  0  48                    0 
+9                     0  19                    0  29                    0  39                    0  49                    0 
+10                    0  20                    0  ARM1                  0  40                    0  50                    0 
+
+
+
+Block Current     Total  Block Current     Total  Block Current     Total  
+51                    0  CVK                   0  71                    0 
+52                    0  62                    0  72                    0 
+53                    0  63                    0  73                    0 
+KMML                  0  64                    0  74                    0 
+55                    0  65                    0  TOEND                 0 
+KMMG                  0  66                    0 
+57                    0  67                    0 
+58                    0  68                    0 
+59                    0  69                    0 
+60                    0  70                    0 
+
+
+
+CURRENT EVENTS CHAIN
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+3        22       TTHR     CEC                  89.9806     89.9806          0               001F8E30
+
+                     1           2           3           4           5           6           7           8           9          10
+PH   1-10            3           0           0           0           0           0           0           0           0           0
+
+FUTURE EVENTS CHAIN
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+1        "BIRTH"  3        FEC                   ---       117.7030          0               001F8F68
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+4        "BIRTH"  21       FEC                   ---       187.1737          0               001F8DC0
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+2        "BIRTH"  12       FEC                   ---       200.0000          0               001F8EA0
+
+
+
+  Random    Antithetic     Initial     Current      Sample   Chi-Square
+  Stream      Variates    Position    Position       Count   Uniformity
+       1           OFF      100000      100003           3       N/A
+
+
+
+Status of Common Storage
+
+   32120 bytes available
+     600 in use
+     600 used (max)
+
+
+
+Simulation complete.  Absolute Clock: 89.9806
+
+
+
+Total Block Executions: 2
+
+Blocks / second:        624998
+
+Microseconds / Block:   1.60
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.00
+Output:          0.00
+---------------------
+Total:           0.00
