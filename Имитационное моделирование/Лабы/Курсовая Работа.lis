@@ -1,4 +1,4 @@
-    Student GPSS/H Release 3.70 (CT256)     22 May 2024   23:33:35     File: C:\Users\AnvelirPortable\Desktop\Ðàáîòà\ÌÀÈ\3k6s\3k6s\Èìèòàöèîííîå ìîäåëèðîâàíèå\Ëàáû\Êóðñîâàÿ Ðàáîòà.txt
+    Student GPSS/H Release 3.70 (CT256)     23 May 2024   19:57:44     File: C:\Users\AnvelirPortable\Desktop\Ðàáîòà\ÌÀÈ\3k6s\3k6s\Èìèòàöèîííîå ìîäåëèðîâàíèå\Ëàáû\Êóðñîâàÿ Ðàáîòà.txt
 
     Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
  
@@ -54,12 +54,12 @@
        50    50                 	SIMULATE
        51    51                  
        52    52                 * ===ÐŸÐ•Ð Ð•ÐœÐ•ÐÐÐ«Ð•===
-       53    53                 	INITIAL X$TOTAL,0
+       53    53                 	INITIAL X$GEMEIN,0
        54    54                  
        55    55                 	INITIAL X$FIRTOTAL,0
        56    56                 	INITIAL X$SECTOTAL,0
 
-    Student GPSS/H Release 3.70 (CT256)     22 May 2024   23:33:35     File: C:\Users\AnvelirPortable\Desktop\Ðàáîòà\ÌÀÈ\3k6s\3k6s\Èìèòàöèîííîå ìîäåëèðîâàíèå\Ëàáû\Êóðñîâàÿ Ðàáîòà.txt
+    Student GPSS/H Release 3.70 (CT256)     23 May 2024   19:57:44     File: C:\Users\AnvelirPortable\Desktop\Ðàáîòà\ÌÀÈ\3k6s\3k6s\Èìèòàöèîííîå ìîäåëèðîâàíèå\Ëàáû\Êóðñîâàÿ Ðàáîòà.txt
 
     Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
  
@@ -70,27 +70,27 @@
        61    61                 	INITIAL X$THRFLICK,0
        62    62                 * ===Ð¤Ð£ÐÐšÐ¦Ð˜Ð˜===
        63    63                 *ÐŸÐ¾Ð´ÑÑ‡Ñ‘Ñ‚ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ñ‚Ñ€Ð°Ð½Ð·Ð°ÐºÑ‚Ð¾Ð² Ð¿Ð¾ Ð¿ÐµÑ€Ð²Ð¾Ð¼Ñƒ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñƒ
-       64    64                 COUNTALL FUNCTION P1,E3
+       64    64                 GETALL FUNCTION P1,E3
        65    65                 1,FIRTOTAL/2,SECTOTAL/3,THRTOTAL
        66    66                  
        67    67                 *Ð¿Ð¾Ð´ÑÑ‡Ñ‘Ñ‚ ÑÑ‡Ñ‘Ñ‚Ñ‡Ð¸ÐºÐ¾Ð² ÑÐ±Ñ€Ð¾ÑÐ° Ð¿Ð¾ Ð¿ÐµÑ€Ð²Ð¾Ð¼Ñƒ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñƒ
-       68    68                 COUNTFLI FUNCTION P1,E3
+       68    68                 GETFLI FUNCTION P1,E3
        69    69                 1,FIRFLICK/2,SECFLICK/3,THRFLICK
        70    70                  
        71    71                 *Ð Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÐµÐ»ÑŒ Ð½Ð° ÑÑ‡Ñ‘Ñ‚Ñ‡Ð¸ÐºÐ¸ ÑÐ±Ñ€Ð¾ÑÐ°
        72    72                 DISTRFLI FUNCTION P1,E3
        73    73                 1,5/2,4/3,3
        74    74                  
-       75    75                 *Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‚ Ð² ÑÐ¾Ð¾Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹ T
+       75    75                 *Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‚ Ð² ÑÐ¾Ð¾Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹ T (Ð¢ÐµÑ€Ð¼Ð¸Ð½Ð°Ð»)
        76    76                 TOT FUNCTION P1,E3
        77    77                 1,TONE/2,TTWO/3,TTHR
        78    78                  
        79    79                 *Ð Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ Ð´Ð»Ñ ARM
-       80    80                 TIMEARM FUNCTION RN1,D3
+       80    80                 TIMEARM FUNCTION RN1,C3
        81    81                 .1,16/.8,25/1,30
        82    82                  
        83    83                 *Ð Ð°Ð¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÐµÐ»ÑŒ Ð´Ð»Ñ KMM Ñƒ Ñ‚Ñ€Ð°Ð½Ð·Ð°ÐºÑ‚Ð¾Ð², Ð¿Ñ€Ð¸ÑˆÐµÐ´ÑˆÐ¸Ñ… Ñ T3
-       84    84                 TIMEKMMT FUNCTION RN2,D2
+       84    84                 TIMEKMMT FUNCTION RN2,C2
        85    85                 .2,3/1,1
        86    86                  
        87    87                 *Ð Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÐµÐ»ÑŒ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ Ð´Ð»Ñ KMM
@@ -99,129 +99,138 @@
        90    90                  
        91    91                 *==ÐœÐ•Ð¢ÐšÐ˜===
        92    92                 *---Ð£ÐÐ˜Ð§Ð¢ÐžÐ–Ð•ÐÐ˜Ð•---
-       93    93              1  KILL	SAVEVALUE FN$COUNTFLI,0 *Ð°Ð½Ð½ÑƒÐ»Ð¸Ñ€ÑƒÐµÐ¼ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹ ÑÑ‡Ñ‘Ñ‚Ñ‡Ð¸Ðº
-       94    94              2  	TERMINATE
-       95    95                  
-       96    96                 *---T1---
-       97    97              3  	GENERATE 120,5,,57
-       98    98              4  	ASSIGN 1,1
-       99    99              5  TONE	QUEUE QT1
-      100   100              6  	SEIZE T1
-      101   101              7  	DEPART QT1
-      102   102              8  	PRIORITY 1
-      103   103              9  	ADVANCE 20,20 *(30+-10)
-      104   104             10  	RELEASE T1
-      105   105             11  	TRANSFER ,ARM1
-      106   106                  
-      107   107                 *---T2---
-      108   108             12  	GENERATE 200,,,18
-      109   109             13  	ASSIGN 1,2
-      110   110             14  TTWO	QUEUE QT2
-      111   111             15  	SEIZE T2
-      112   112             16  	DEPART QT2
+       93    93              1  KILL	TERMINATE
+       94    94                  
+       95    95                 *---T1---
+       96    96              2  	GENERATE 120,5,,57
+       97    97              3  	ASSIGN 1,1
+       98    98              4  TONE	QUEUE QTONE
+       99    99              5  	SEIZE T1
+      100   100              6  	DEPART QTONE
+      101   101              7  	PRIORITY 1
+      102   102              8  	ADVANCE 30,10 *(30+-10)
+      103   103              9  	RELEASE T1
+      104   104             10  	SAVEVALUE FN$GETALL+,1
+      105   105             11  	TEST NE P3,1,KILL
+      106   106             12  	TRANSFER ,ARM1
+      107   107                  
+      108   108                 *---T2---
+      109   109             13  	GENERATE 200,,,18
+      110   110             14  	ASSIGN 1,2
+      111   111             15  TTWO	QUEUE QTTWO
+      112   112             16  	SEIZE T2
 
-    Student GPSS/H Release 3.70 (CT256)     22 May 2024   23:33:35     File: C:\Users\AnvelirPortable\Desktop\Ðàáîòà\ÌÀÈ\3k6s\3k6s\Èìèòàöèîííîå ìîäåëèðîâàíèå\Ëàáû\Êóðñîâàÿ Ðàáîòà.txt
+    Student GPSS/H Release 3.70 (CT256)     23 May 2024   19:57:44     File: C:\Users\AnvelirPortable\Desktop\Ðàáîòà\ÌÀÈ\3k6s\3k6s\Èìèòàöèîííîå ìîäåëèðîâàíèå\Ëàáû\Êóðñîâàÿ Ðàáîòà.txt
 
     Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
  
-      113   113             17  	PRIORITY 1
-      114   114             18  	ADVANCE 10,9 *10,23 (33+-5) !!!Ð’Ð«Ð—Ð«Ð’ÐÐ•Ð¢ ÐžÐ¨Ð˜Ð‘ÐšÐ£!!!
-      115   115             19  	RELEASE T2
-      116   116             20  	TRANSFER ,ARM2
-      117   117                  
-      118   118                 *---T3---
-      119   119             21  	GENERATE 90,15,,45
-      120   120             22  	ASSIGN 1,3
-      121   121             23  TTHR	QUEUE QT3
-      122   122             24  	SEIZE T3
-      123   123             25  	DEPART QT3
-      124   124             26  	PRIORITY 1
-      125   125             27  	ADVANCE 24,23 *(35+-12)
-      126   126             28  	RELEASE T3
-      127   127             29  	TRANSFER ,ARM3
-      128   128                 	
-      129   129                 *---ARM1---
-      130   130             30  ARM1	QUEUE QARM1
-      131   131             31  	SEIZE ARM1
-      132   132             32  	DEPART QARM1
-      133   133             33  	ADVANCE FN$TIMEARM
-      134   134             34  	RELEASE ARM1
-      135   135             35  	ASSIGN 2,0
-      136   136             36  	PRIORITY 5
-      137   137             37  	TRANSFER .3,TONE,KMML
-      138   138                  
-      139   139                 *---ARM2---
-      140   140             38  ARM2	QUEUE QARM2
-      141   141             39  	SEIZE ARM2
-      142   142             40  	DEPART QARM2
-      143   143             41  	ADVANCE FN$TIMEARM
-      144   144             42  	RELEASE ARM2
-      145   145             43  	ASSIGN 2,0
-      146   146             44  	PRIORITY 5
-      147   147             45  	TRANSFER .3,TTWO,KMML
-      148   148                  
-      149   149                 *---ARM3---
-      150   150             46  ARM3	QUEUE QARM3
-      151   151             47  	SEIZE ARM3
-      152   152             48  	DEPART QARM3
-      153   153             49  	ADVANCE FN$TIMEARM
-      154   154             50  	RELEASE ARM3
-      155   155             51  	ASSIGN 2,0
-      156   156             52  	PRIORITY 5
-      157   157             53  	TRANSFER .3,TTHR,KMML
-      158   158                  
-      159   159                 *---KMM---
-      160   160             54  KMML	QUEUE QKMM
-      161   161             55  	LINK KMMBUNDL,FIFO,KMMG
-      162   162             56  KMMG	DEPART QKMM
-      163   163             57  	ADVANCE FN$TIMEKMM
-      164   164             58  	UNLINK KMMBUNDL,KMMG,1
-      165   165             59  	TEST E P2,1,FN$TOT *Ð’Ñ‚Ð¾Ñ€Ð¾Ð¹ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚ÐµÑ€ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚, Ð¾Ñ‚ÐºÑƒÐ´Ð° Ð¿Ñ€Ð¸ÑˆÐ»Ð¸. 0=ARM, 1=CVK
-      166   166             60  	TRANSFER ,CVK
-      167   167                  
-      168   168                 *---CVK---
+      113   113             17  	DEPART QTTWO
+      114   114             18  	PRIORITY 1
+      115   115             19  	ADVANCE 33,5 *(33+-5)
+      116   116             20  	RELEASE T2
+      117   117             21  	SAVEVALUE FN$GETALL+,1
+      118   118             22  	TEST NE P3,1,KILL
+      119   119             23  	TRANSFER ,ARM2
+      120   120                  
+      121   121                 *---T3---
+      122   122             24  	GENERATE 90,15,,45
+      123   123             25  	ASSIGN 1,3
+      124   124             26  TTHR	QUEUE QTTHR
+      125   125             27  	SEIZE T3
+      126   126             28  	DEPART QTTHR
+      127   127             29  	PRIORITY 1
+      128   128             30  	ADVANCE 35,12 *(35+-12)
+      129   129             31  	RELEASE T3
+      130   130             32  	SAVEVALUE FN$GETALL+,1
+      131   131             33  	TEST NE P3,1,KILL
+      132   132             34  	TRANSFER ,ARM3
+      133   133                 	
+      134   134                 *---ARM1---
+      135   135             35  ARM1	QUEUE QARM1
+      136   136             36  	SEIZE ARM1
+      137   137             37  	DEPART QARM1
+      138   138             38  	ADVANCE FN$TIMEARM
+      139   139             39  	RELEASE ARM1
+      140   140             40  	ASSIGN 2,0
+      141   141             41  	PRIORITY 5
+      142   142             42  	TRANSFER .3,TONE,KMML
+      143   143                  
+      144   144                 *---ARM2---
+      145   145             43  ARM2	QUEUE QARM2
+      146   146             44  	SEIZE ARM2
+      147   147             45  	DEPART QARM2
+      148   148             46  	ADVANCE FN$TIMEARM
+      149   149             47  	RELEASE ARM2
+      150   150             48  	ASSIGN 2,0
+      151   151             49  	PRIORITY 5
+      152   152             50  	TRANSFER .3,TTWO,KMML
+      153   153                  
+      154   154                 *---ARM3---
+      155   155             51  ARM3	QUEUE QARM3
+      156   156             52  	SEIZE ARM3
+      157   157             53  	DEPART QARM3
+      158   158             54  	ADVANCE FN$TIMEARM
+      159   159             55  	RELEASE ARM3
+      160   160             56  	ASSIGN 2,0
+      161   161             57  	PRIORITY 5
+      162   162             58  	TRANSFER .3,TTHR,KMML
+      163   163                  
+      164   164                 *---KMM---
+      165   165             59  KMML	QUEUE QKMM
+      166   166             60  	LINK KMMBUNDL,FIFO,KMMG
+      167   167             61  KMMG	DEPART QKMM
+      168   168             62  	ADVANCE FN$TIMEKMM
 
-    Student GPSS/H Release 3.70 (CT256)     22 May 2024   23:33:35     File: C:\Users\AnvelirPortable\Desktop\Ðàáîòà\ÌÀÈ\3k6s\3k6s\Èìèòàöèîííîå ìîäåëèðîâàíèå\Ëàáû\Êóðñîâàÿ Ðàáîòà.txt
+    Student GPSS/H Release 3.70 (CT256)     23 May 2024   19:57:44     File: C:\Users\AnvelirPortable\Desktop\Ðàáîòà\ÌÀÈ\3k6s\3k6s\Èìèòàöèîííîå ìîäåëèðîâàíèå\Ëàáû\Êóðñîâàÿ Ðàáîòà.txt
 
     Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
  
-      169   169             61  CVK	ASSIGN 2,1
-      170   170             62  	QUEUE QCVK
-      171   171             63  	SEIZE CVK
-      172   172             64  	DEPART QCVK
-      173   173             65  	ADVANCE 40,5
-      174   174             66  	RELEASE CVK
-      175   175             67  	ASSIGN 2,1
-      176   176             68  	SAVEVALUE FN$COUNTFLI+,1
-      177   177             69  	SAVEVALUE FN$COUNTALL+,1
-      178   178             70  	SAVEVALUE X$TOTAL+,1
-      179   179             71  	TEST NE FN$COUNTFLI,FN$DISTRFLI,KILL
-      180   180             72  	PRIORITY 4
-      181   181             73  	TEST L X$TOTAL,300,TOEND
-      182   182             74  	TRANSFER ,KMML
-      183   183                  
-      184   184                 *===ÐšÐžÐÐ•Ð¦===
-      185   185             75  TOEND	TERMINATE 1
-      186   186                 	START 10000
-      187   187                 	END
+      169   169             63  	UNLINK KMMBUNDL,KMMG,1
+ 
+*** WARNING  642 - The next source statement exceeds 133 characters; only the first 133 characters will be processed
+ 
+      170   170             64  	TEST E P2,1,CVK *Ð’Ñ‚Ð¾Ñ€Ð¾Ð¹ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚ÐµÑ€ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚, Ð¾Ñ‚ÐºÑƒÐ´Ð° Ð¿Ñ€Ð¸ÑˆÐ»Ð¸. 0=ARM, 1=CVK(ÐŸÐµÑ€ÐµÐ´Ð°Ñ‡Ð° Ð² Ñ
+      171   171             65  	TEST G FN$GETFLI,FN$DISTRFLI,KMMSK
+      172   172             66  	ASSIGN 3,1
+      173   173             67  	SAVEVALUE FN$GETFLI,0 *Ð°Ð½Ð½ÑƒÐ»Ð¸Ñ€ÑƒÐµÐ¼ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹ ÑÑ‡Ñ‘Ñ‚Ñ‡Ð¸Ðº
+      174   174             68  KMMSK	TRANSFER ,FN$TOT
+      175   175                  
+      176   176                 *---CVK---
+      177   177             69  CVK	ASSIGN 2,1
+      178   178             70  	QUEUE QCVK
+      179   179             71  	SEIZE CVK
+      180   180             72  	DEPART QCVK
+      181   181             73  	ADVANCE 40,5
+      182   182             74  	RELEASE CVK
+      183   183             75  	SAVEVALUE FN$GETFLI+,1
+      184   184             76  	SAVEVALUE GEMEIN+,1
+      185   185             77  	PRIORITY 4
+      186   186             78  	TEST L X$GEMEIN,300,TOEND
+      187   187             79  	TRANSFER ,KMML
+      188   188                  
+      189   189                 *===ÐšÐžÐÐ•Ð¦===
+      190   190             80  TOEND	TERMINATE 1
+      191   191                 	
+      192   192                 	START 1
+      193   193                 	END
 
 Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
 
-       Facilities: 1=T1            2=T2            3=T3            30=ARM1         38=ARM2         46=ARM3         
-                   61=CVK
+       Facilities: 1=T1            2=T2            3=T3            35=ARM1         43=ARM2         51=ARM3         
+                   69=CVK
 
-           Queues: 1               2               3               4=QARM1         5=QARM2         6=QARM3         
+           Queues: 1=QTONE         2=QTTWO         3=QTTHR         4=QARM1         5=QARM2         6=QARM3         
                    7=QKMM          8=QCVK
 
-        Functions: 1=COUNTALL      2=COUNTFLI      3=DISTRFLI      4=TOT           5=TIMEARM       6=TIMEKMMT      
+        Functions: 1=GETALL        2=GETFLI        3=DISTRFLI      4=TOT           5=TIMEARM       6=TIMEKMMT      
                    7=TIMEKMM
 
- Fullword Savexes: 1=TOTAL         2=FIRTOTAL      3=SECTOTAL      4=THRTOTAL      5=FIRFLICK      6=SECFLICK      
+ Fullword Savexes: 1=GEMEIN        2=FIRTOTAL      3=SECTOTAL      4=THRTOTAL      5=FIRFLICK      6=SECFLICK      
                    7=THRFLICK
 
       User Chains: 1=KMMBUNDL
 
-       Parameters: 1               2
+       Parameters: 1               2               3
 
    Random Numbers: 1               2
 
@@ -233,62 +242,63 @@ SECFLICK     6              Absolute        69
 SECTOTAL     3              Absolute        65
 THRFLICK     7              Absolute        69
 THRTOTAL     4              Absolute        65
-TONE         5              Absolute        77
-TTHR        23              Absolute        77
-TTWO        14              Absolute        77
+TONE         4              Absolute        77
+TTHR        26              Absolute        77
+TTWO        15              Absolute        77
  
-ARM1        30         130  Block          105
-ARM2        38         140  Block          116
-ARM3        46         150  Block          127
-CVK         61         169  Block          166
-KILL         1          93  Block          179
-KMMG        56         162  Block          161   164
-KMML        54         160  Block          137   147   157   182
-TOEND       75         185  Block          181
-TONE         5          99  Block          137
-TTHR        23         121  Block          157
-TTWO        14         110  Block          147
+ARM1        35         135  Block          106
+ARM2        43         145  Block          119
+ARM3        51         155  Block          132
+CVK         69         177  Block          170
+KILL         1          93  Block          105   118   131
+KMMG        61         167  Block          166   169
+KMML        59         165  Block          142   152   162   187
+KMMSK       68         174  Block          171
+TOEND       80         190  Block          186
+TONE         4          98  Block          142
+TTHR        26         124  Block          162
+TTWO        15         111  Block          152
  
-ARM1        30              Facility       131   134
-ARM2        38              Facility       141   144
-ARM3        46              Facility       151   154
-CVK         61              Facility       171   174
-T1           1              Facility       100   104
-T2           2              Facility       111   115
-T3           3              Facility       122   126
+ARM1        35              Facility       136   139
+ARM2        43              Facility       146   149
+ARM3        51              Facility       156   159
+CVK         69              Facility       179   182
+T1           1              Facility        99   103
+T2           2              Facility       112   116
+T3           3              Facility       125   129
  
-1            1              Queue           99   101
-2            2              Queue          110   112
-3            3              Queue          121   123
-QARM1        4              Queue          130   132
-QARM2        5              Queue          140   142
-QARM3        6              Queue          150   152
-QCVK         8              Queue          170   172
-QKMM         7              Queue          160   162
+QARM1        4              Queue          135   137
+QARM2        5              Queue          145   147
+QARM3        6              Queue          155   157
+QCVK         8              Queue          178   180
+QKMM         7              Queue          165   167
+QTONE        1              Queue           98   100
+QTTHR        3              Queue          124   126
+QTTWO        2              Queue          111   113
  
-COUNTALL     1          64  Function       177
-COUNTFLI     2          68  Function        93   176   179
-DISTRFLI     3          72  Function       179
-TIMEARM      5          80  Function       133   143   153
-TIMEKMM      7          88  Function       163
+DISTRFLI     3          72  Function       171
+GETALL       1          64  Function       104   117   130
+GETFLI       2          68  Function       171   173   183
+TIMEARM      5          80  Function       138   148   158
+TIMEKMM      7          88  Function       168
 TIMEKMMT     6          84  Function        89
-TOT          4          76  Function       165
+TOT          4          76  Function       174
  
 FIRFLICK     5              Fullword Svx    59
 FIRTOTAL     2              Fullword Svx    55
+GEMEIN       1              Fullword Svx    53   184   186
 SECFLICK     6              Fullword Svx    60
 SECTOTAL     3              Fullword Svx    56
 THRFLICK     7              Fullword Svx    61
 THRTOTAL     4              Fullword Svx    57
-TOTAL        1              Fullword Svx    53   178   181
  
-KMMBUNDL     1              User Chain     161   164
- 
-1            1              Parameter       64    68    72    76    88    98   109   120
+KMMBUNDL     1              User Chain     166   169
 
 Symbol   Value   EQU Defns  Context      References by Statement Number
  
-2            2              Parameter      135   145   155   165   169   175
+1            1              Parameter       64    68    72    76    88    97   110   123
+2            2              Parameter      140   150   160   170   177
+3            3              Parameter      105   118   131   172
  
 1            1              Random Nmbr     80
 2            2              Random Nmbr     84
@@ -297,119 +307,115 @@ Symbol   Value   EQU Defns  Context      References by Statement Number
 
 Storage Requirements (Bytes)
 
-Compiled Code:     3148
-Compiled Data:      200
+Compiled Code:     3250
+Compiled Data:      256
 Miscellaneous:        0
-Entities:          5727
+Entities:          5096
 Common:           32720
 -----------------------
-Total:            41795
+Total:            41322
 
 
 
 GPSS/H Model Size:
 
 Control Statements     17
-Blocks                 75
+Blocks                 80
 
 
 
 Simulation begins.
 
-Error number 422 - Queue # referenced is outside 1...N range allocated
-
-
-Xact 3 from 22 (TTWO+8) to 23 (TTHR)    Absclock: 89.9806    Relclock: 89.9806    TTG: 10000
-
-Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
-
-3        22       TTHR     CEC                  89.9806     89.9806          0               001F8E30
-
-                     1           2           3           4           5           6           7           8           9          10
-PH   1-10            3           0           0           0           0           0           0           0           0           0
-
-
-
-Relative Clock: 89.9806   Absolute Clock: 89.9806
+Relative Clock: 25837.0992   Absolute Clock: 25837.0992
 
 
 
 Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total
-KILL                  0  11                    0  21                    1  31                    0  41                    0 
-2                     0  12                    0  22                    1  32                    0  42                    0 
-3                     0  13                    0  TTHR                  0  33                    0  43                    0 
-4                     0  TTWO                  0  24                    0  34                    0  44                    0 
-TONE                  0  15                    0  25                    0  35                    0  45                    0 
-6                     0  16                    0  26                    0  36                    0  ARM3                  0 
-7                     0  17                    0  27                    0  37                    0  47                    0 
-8                     0  18                    0  28                    0  ARM2                  0  48                    0 
-9                     0  19                    0  29                    0  39                    0  49                    0 
-10                    0  20                    0  ARM1                  0  40                    0  50                    0 
+KILL                 63  11                  855  21                   68  31                  176  41                  854 
+2                    57  12                  855  22                   68  32                  176  42                  854 
+3                    57  13                   18  23                   50  33                  176  ARM2                 50 
+TONE       54       910  14                   18  24                   45  34                  131  44                   50 
+5                   856  TTWO                 68  25                   45  ARM1                855  45                   50 
+6                   856  16                   68  TTHR                176  36                  855  46                   50 
+7                   856  17                   68  27                  176  37                  855  47                   50 
+8           1       856  18                   68  28                  176  38          1       855  48                   50 
+9                   855  19                   68  29                  176  39                  854  49                   50 
+10                  855  20                   68  30                  176  40                  854  50                   50 
 
 
 
 Block Current     Total  Block Current     Total  Block Current     Total  
-51                    0  CVK                   0  71                    0 
-52                    0  62                    0  72                    0 
-53                    0  63                    0  73                    0 
-KMML                  0  64                    0  74                    0 
-55                    0  65                    0  TOEND                 0 
-KMMG                  0  66                    0 
-57                    0  67                    0 
-58                    0  68                    0 
-59                    0  69                    0 
-60                    0  70                    0 
+ARM3                131  KMMG                599  71                  300 
+52                  131  62                  599  72                  300 
+53                  131  63                  599  73                  300 
+54                  131  64                  599  74                  300 
+55                  131  65                  299  75                  300 
+56                  131  66                   63  76                  300 
+57                  131  67                   63  77                  300 
+58                  131  KMMSK               299  78                  300 
+KMML                599  CVK                 300  79                  299 
+60                  599  70                  300  TOEND                 1 
 
 
 
-CURRENT EVENTS CHAIN
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+      T1  0.993                       856      29.975    AVAIL               13 
+      T2  0.088                        68      33.333    AVAIL                  
+      T3  0.235                       176      34.483    AVAIL                  
+    ARM1  0.703                       855      21.252    AVAIL                5 
+    ARM2  0.043                        50      22.151    AVAIL                  
+    ARM3  0.110                       131      21.607    AVAIL                  
+     CVK  0.469                       300      40.398    AVAIL                  
 
-Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
 
-3        22       TTHR     CEC                  89.9806     89.9806          0               001F8E30
 
-                     1           2           3           4           5           6           7           8           9          10
-PH   1-10            3           0           0           0           0           0           0           0           0           0
+   Queue     Maximum      Average       Total        Zero     Percent      Average      $Average     Qtable     Current
+            Contents     Contents      Entries     Entries     Zeros      Time/Unit    Time/Unit     Number    Contents
+   QTONE          56       47.111         910           3        0.3      1337.602      1342.026                     54
+   QTTWO           2        0.021          68          42       61.8         7.877        20.602                      0
+   QTTHR          16        1.728         176           8        4.5       253.681       265.761                      0
+   QARM1           1        0.016         855         732       85.6         0.497         3.452                      0
+   QARM2           1        0.000          50          50      100.0         0.000         0.000                      0
+   QARM3           1        0.001         131         120       91.6         0.178         2.117                      0
+    QKMM           2        0.001         599         579       96.7         0.037         1.111                      0
+    QCVK           4        0.200         300         164       54.7        17.202        37.945                      0
 
-FUTURE EVENTS CHAIN
+User Chain   Entries    Average      Average     Current     Maximum
+                       Time/Xact    Contents    Contents    Contents
+KMMBUNDL          20       1.111       0.001           0           2 
 
-Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
 
-1        "BIRTH"  3        FEC                   ---       117.7030          0               001F8F68
 
-Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+Non-zero Fullword Savevalues:  (NAME : VALUE)
 
-4        "BIRTH"  21       FEC                   ---       187.1737          0               001F8DC0
-
-Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
-
-2        "BIRTH"  12       FEC                   ---       200.0000          0               001F8EA0
+  GEMEIN:         300, FIRTOTAL:         855, SECTOTAL:          68, THRTOTAL:         176, FIRFLICK:         237
 
 
 
   Random    Antithetic     Initial     Current      Sample   Chi-Square
   Stream      Variates    Position    Position       Count   Uniformity
-       1           OFF      100000      100003           3       N/A
+       1           OFF      100000      103575        3575      0.86
+       2           OFF      200000      200090          90      0.46
 
 
 
 Status of Common Storage
 
-   32120 bytes available
-     600 in use
-     600 used (max)
+   25104 bytes available
+    7616 in use
+    7776 used (max)
+
+Simulation complete.  Absolute Clock: 25837.0992
 
 
 
-Simulation complete.  Absolute Clock: 89.9806
+Total Block Executions: 26092
 
+Blocks / second:        4132208
 
-
-Total Block Executions: 2
-
-Blocks / second:        624998
-
-Microseconds / Block:   1.60
+Microseconds / Block:   0.24
 
 
 
@@ -419,7 +425,7 @@ Pass1:           0.00
 Sym/Xref         0.00
 Pass2:           0.00
 Load/Ctrl:       0.00
-Execution:       0.00
+Execution:       0.01
 Output:          0.00
 ---------------------
-Total:           0.00
+Total:           0.01
