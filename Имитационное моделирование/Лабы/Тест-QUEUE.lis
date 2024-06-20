@@ -1,0 +1,266 @@
+    Student GPSS/H Release 3.70 (CT256)     20 Jun 2024   20:03:02     File: C:\Users\AnvelirPortable\Desktop\Работа\МАИ\3k6s\3k6s\Имитационное моделирование\Лабы\Тест-QUEUE.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                 	SIMULATE
+        2     2              1  	GENERATE 11
+        3     3              2  	QUEUE AAA,2.5
+        4     4              3  	SEIZE MEM
+        5     5              4  	DEPART AAA
+        6     6              5  	ADVANSE 15
+        7     7              6  	RELEASE MEM
+        8     8              7  	TERMINATE 1
+        9     9                  
+       10    10                 	START 100,,,1
+       11    11                 	END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 1=MEM
+
+           Queues: 1=AAA
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+MEM          1              Facility         4     7
+ 
+AAA          1              Queue            3     5
+*** IN STATEMENT 3 - WARNING 341 - Floating point constant truncated to an integer value
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:      186
+Compiled Data:       40
+Miscellaneous:        0
+Entities:           368
+Common:           10000
+-----------------------
+Total:            10594
+
+
+
+GPSS/H Model Size:
+
+Control Statements      3
+Blocks                  7
+
+
+
+Simulation begins.
+
+Relative Clock: 1511.0000   Absolute Clock: 1511.0000
+
+
+
+Block Current     Total  
+1                   137 
+2          37       137 
+3                   100 
+4                   100 
+5                   100 
+6                   100 
+7                   100 
+
+
+
+CURRENT EVENTS CHAIN
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+101      2        3        CEC      D         1111.0000   1111.0000          0               0017C728
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+102      2        3        CEC      D         1122.0000   1122.0000          0               0017C928
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+103      2        3        CEC      D         1133.0000   1133.0000          0               0017C428
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+104      2        3        CEC      D         1144.0000   1144.0000          0               0017C028
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+105      2        3        CEC      D         1155.0000   1155.0000          0               0017CAA8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+106      2        3        CEC      D         1166.0000   1166.0000          0               0017CD28
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+107      2        3        CEC      D         1177.0000   1177.0000          0               0017C6A8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+108      2        3        CEC      D         1188.0000   1188.0000          0               0017BFA8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+109      2        3        CEC      D         1199.0000   1199.0000          0               0017C3A8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+110      2        3        CEC      D         1210.0000   1210.0000          0               0017CBA8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+111      2        3        CEC      D         1221.0000   1221.0000          0               0017BF28
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+112      2        3        CEC      D         1232.0000   1232.0000          0               0017C8A8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+113      2        3        CEC      D         1243.0000   1243.0000          0               0017C328
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+114      2        3        CEC      D         1254.0000   1254.0000          0               0017CD98
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+115      2        3        CEC      D         1265.0000   1265.0000          0               0017BEA8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+116      2        3        CEC      D         1276.0000   1276.0000          0               0017C628
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+117      2        3        CEC      D         1287.0000   1287.0000          0               0017CA28
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+118      2        3        CEC      D         1298.0000   1298.0000          0               0017C2A8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+119      2        3        CEC      D         1309.0000   1309.0000          0               0017BE28
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+120      2        3        CEC      D         1320.0000   1320.0000          0               0017CEE0
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+121      2        3        CEC      D         1331.0000   1331.0000          0               0017C828
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+122      2        3        CEC      D         1342.0000   1342.0000          0               0017C5A8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+123      2        3        CEC      D         1353.0000   1353.0000          0               0017BDA8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+124      2        3        CEC      D         1364.0000   1364.0000          0               0017C228
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+125      2        3        CEC      D         1375.0000   1375.0000          0               0017CB28
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+126      2        3        CEC      D         1386.0000   1386.0000          0               0017BD28
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+127      2        3        CEC      D         1397.0000   1397.0000          0               0017CC28
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+128      2        3        CEC      D         1408.0000   1408.0000          0               0017C528
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+129      2        3        CEC      D         1419.0000   1419.0000          0               0017C1A8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+130      2        3        CEC      D         1430.0000   1430.0000          0               0017BCA8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+131      2        3        CEC      D         1441.0000   1441.0000          0               0017C9A8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+132      2        3        CEC      D         1452.0000   1452.0000          0               0017C7A8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+133      2        3        CEC      D         1463.0000   1463.0000          0               0017C128
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+134      2        3        CEC      D         1474.0000   1474.0000          0               0017BC28
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+135      2        3        CEC      D         1485.0000   1485.0000          0               0017CE18
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+136      2        3        CEC      D         1496.0000   1496.0000          0               0017C4A8
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+137      2        3        CEC      D         1507.0000   1507.0000          0               0017CCA8
+
+
+
+FUTURE EVENTS CHAIN
+
+Xact     Curblk   Nxtblk   Chains  SDPGFT**   Mark-Time   Move-Time   Priority   PC Asmset     Addr
+
+138      "BIRTH"  1        FEC                   ---      1518.0000          0               0017BBA8
+
+
+
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+     MEM  0.993                       100      15.000    AVAIL                  
+
+   Queue     Maximum      Average       Total        Zero     Percent      Average      $Average     Qtable     Current
+            Contents     Contents      Entries     Entries     Zeros      Time/Unit    Time/Unit     Number    Contents
+     AAA         174       86.233         274           1        0.4       475.540       477.282                    174
+
+
+
+Status of Common Storage
+
+    5000 bytes available
+    5000 in use
+    5112 used (max)
+
+Simulation complete.  Absolute Clock: 1511.0000
+
+
+
+Total Block Executions: 774
+
+Blocks / second:        15176471
+
+Microseconds / Block:   0.07
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.00
+Output:          0.00
+---------------------
+Total:           0.00
