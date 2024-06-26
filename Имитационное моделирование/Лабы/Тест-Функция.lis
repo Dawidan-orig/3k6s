@@ -1,0 +1,132 @@
+    Student GPSS/H Release 3.70 (CT256)     25 Jun 2024   10:34:28     File: C:\Users\AnvelirPortable\Desktop\Работа\МАИ\3k6s\3k6s\Имитационное моделирование\Лабы\Тест-Функция.txt
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                 	SIMULATE
+        2     2                 TES	FUNCTION P1,D2
+        3     3                 3,MET2/7,MET3
+        4     4                  
+        5     5              1  	GENERATE 1,,,1
+        6     6              2  	SPLIT 10,MET1,1
+        7     7              3  	TERMINATE
+        8     8                 	
+        9     9              4  MET1	TRANSFER ,FN$TES
+       10    10                  
+       11    11              5  MET2	QUEUE FIR
+       12    12              6  	DEPART FIR
+       13    13              7  	TERMINATE
+       14    14                  
+       15    15              8  MET3	QUEUE SEC
+       16    16              9  	DEPART SEC
+       17    17             10  	TERMINATE
+       18    18                  
+       19    19             11  	GENERATE 100,,,1
+       20    20             12  	TERMINATE 1
+       21    21                 	START 1,,,1
+       22    22                 	END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+           Queues: 1=FIR           2=SEC
+
+        Functions: 1=TES
+
+       Parameters: 1
+
+
+*** Warning: The following entities have been defined but not explicitly referenced:
+
+           Blocks:  MET2      MET3    
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+MET2         5              Absolute         3
+MET3         8              Absolute         3
+ 
+MET1         4           9  Block            6
+MET2         5          11  Block       
+MET3         8          15  Block       
+ 
+FIR          1              Queue           11    12
+SEC          2              Queue           15    16
+ 
+TES          1           2  Function         9
+ 
+1            1              Parameter        2     6
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:      570
+Compiled Data:      132
+Miscellaneous:        0
+Entities:           314
+Common:           10000
+-----------------------
+Total:            11016
+
+
+
+GPSS/H Model Size:
+
+Control Statements      4
+Blocks                 12
+
+
+
+Simulation begins.
+
+Relative Clock: 100.0000   Absolute Clock: 100.0000
+
+
+
+Block Current     Total  Block Current     Total  
+1                     1  11                    1 
+2                    11  12                    1 
+3                     1 
+MET1                 10 
+MET2                  2 
+6                     2 
+7                     2 
+MET3                  8 
+9                     8 
+10                    8 
+
+
+
+   Queue     Maximum      Average       Total        Zero     Percent      Average      $Average     Qtable     Current
+            Contents     Contents      Entries     Entries     Zeros      Time/Unit    Time/Unit     Number    Contents
+     FIR           1        0.000           2           2      100.0         0.000         0.000                      0
+     SEC           1        0.000           8           8      100.0         0.000         0.000                      0
+
+
+
+Status of Common Storage
+
+    9848 bytes available
+     152 in use
+    1528 used (max)
+
+Simulation complete.  Absolute Clock: 100.0000
+
+
+
+Total Block Executions: 55
+
+Blocks / second:        2235770
+
+Microseconds / Block:   0.45
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.00
+Output:          0.00
+---------------------
+Total:           0.00
